@@ -1,0 +1,28 @@
+---
+- name: Main samba config
+  template:
+    src: smb.conf
+    dest: /etc/samba/smb.conf
+  notify:
+    - Restart samba
+
+- name: Create samba configs directory
+  file:
+    state: directory
+    path: "{{ samba_conf_dir }}"
+
+- name: Samba include configs
+  copy:
+    src: "{{ item }}"
+    dest: "{{ samba_conf_dir }}"
+  with_fileglob: "{{ samba_conf_local_dir }}/*.conf"
+  when: samba_conf_local_dir is defined
+  notify:
+    - Restart samba
+
+- name: Allow samba ports
+  ufw:
+    to_port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+    rule: allow
+  with_items: "{{ samba_ports }}"

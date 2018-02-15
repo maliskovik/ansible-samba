@@ -1,0 +1,8 @@
+---
+samba_base_dir: /etc/samba
+samba_conf_dir: "{{ samba_base_dir}}/conf.d"
+samba_workgroup: "WORKGROUP"
+samba_server_string: "%h server (Samba, Ubuntu)"
+samba_dns_proxy: "no"
+samaba_log_file: "/var/log/samba/log.%m"
+samba_local_users: false

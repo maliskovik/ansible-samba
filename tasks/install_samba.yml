@@ -1,0 +1,13 @@
+---
+- name: Install samba
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ samaba_packages }}"
+
+- name: Install samba optional packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ samaba_optional_packages|default(omit) }}"
+  when: samaba_optional_packages is defined

@@ -1,0 +1,15 @@
+---
+samaba_packages:
+  - samba
+
+samba_ports:
+  - port: 137
+    proto: "udp"
+  - port: 138
+    proto: "udp"
+  - port: 139
+    proto: "tcp"
+  - port: 445
+    proto: "tcp"
+  - port: 445
+    proto: "udp"
