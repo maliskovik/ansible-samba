@@ -6,3 +6,4 @@ samba_server_string: "%h server (Samba, Ubuntu)"
 samba_dns_proxy: "no"
 samaba_log_file: "/var/log/samba/log.%m"
 samba_local_users: false
+samba_ldap: false
